@@ -35,7 +35,7 @@ class FoxTotems extends Build {
 	@Override
 	public void fourPiece(HashMap<Set, Float> sets) {
 		sets.put(Set.Golden, 1f);
-		sets.put(Set.Gilded, 0.9f);
+		sets.put(Set.Gilded, 1f);
 		sets.put(Set.Emblem, 0.9f);
 	}
 

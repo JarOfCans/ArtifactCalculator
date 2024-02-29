@@ -50,6 +50,8 @@ public enum Set {
 	Glow("VourukashasGlow", Stat.HPP, true)
 	,Marechaussee("MarechausseeHunter", Stat.Normal, true)
 	,Golden("GoldenTroupe", Stat.Skill, true)
+	,Nighttime("NighttimeWhispersInTheEchoingWoods", Stat.ATKP, true)
+	,DaysPast("SongOfDaysPast", Stat.HB, true)
 	
 	
 	

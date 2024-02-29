@@ -78,18 +78,17 @@ public enum Slot {
 		switch (slot) {
 		case flower:
 		case plume:
-			return .15f;
+			return .05f;
 		case sands:
 			switch (stat) {
 			case ATKP:
-				return .075f;
+				return .025f;
 			case HPP:
 			case DEFP:
-				return .1f;
+				return .075f;
 			case ER:
-				return .04f;
 			case EM:
-				return .04f;
+				return .0f;
 			}
 			return 0f;
 		case goblet:
@@ -97,7 +96,7 @@ public enum Slot {
 			case HPP:
 			case ATKP:
 			case DEFP:
-				return .125f;
+				return .075f;
 			case EM:
 			case Pyro:
 			case Electro:
@@ -115,14 +114,14 @@ public enum Slot {
 			case HPP:
 			case ATKP:
 			case DEFP:
-				return .125f;
+				return .075f;
 			case EM:
 				return 0f;
 			case CR:
 			case CD:
-				return 0.02f;
+				return 0f;
 			case HB:
-				return 0.05f;
+				return 0.01f;
 			}
 			return 0f;
 		default:

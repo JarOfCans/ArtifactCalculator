@@ -58,7 +58,7 @@ class LAMENT extends Build {
 	public void subs(HashMap<Stat, Float> stats) {
 		stats.put(Stat.CR, 0.9f);
 		stats.put(Stat.CD, 1f);
-		stats.put(Stat.ER, 0.9f);
+		stats.put(Stat.ER, 1f);
 		stats.put(Stat.ATKP, 0.8f);
 		stats.put(Stat.EM, 0.5f);
 		stats.put(Stat.ATK, 0.25f);

@@ -59,6 +59,7 @@ class VVHat extends Build {
 		stats.put(Stat.ATKP, 0.7f);
 		stats.put(Stat.ATK, 0.25f);
 		stats.put(Stat.ER, 0.9f);
+		stats.put(Stat.EM, 0.6f);
 	}
 	
 }

@@ -1,5 +1,7 @@
 package articalc.enums;
 
+import articalc.artifact.Artifact;
+
 public enum Domain {
 	
 	Bosses(Set.Gladiator, Set.Wanderers, true),
@@ -16,7 +18,8 @@ public enum Domain {
 	SolitaryEnlightenment(Set.Deepwood, Set.Gilded, false),
 	GoldCity(Set.DesertPavilion, Set.ParadiseLost, false),
 	MoltenIron(Set.Glow, Set.Nymph, false),
-	Denouement(Set.Marechaussee, Set.Golden, false);
+	Denouement(Set.Marechaussee, Set.Golden, false),
+	WaterfallWen(Set.Nighttime, Set.DaysPast, false);
 	
 	
 	
@@ -31,6 +34,10 @@ public enum Domain {
 		this.set2 = set2;
 		this.set2.coSet = set1;
 		this.StrongBoxable = StrongBox;
+	}
+	
+	public Artifact runDomain() {
+		return Artifact.newRandomArtifactDomain(set1, set2);
 	}
 	
 }

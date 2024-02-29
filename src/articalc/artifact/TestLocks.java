@@ -10,11 +10,12 @@ import articalc.enums.Characters;
 import articalc.enums.Set;
 import articalc.enums.Slot;
 import articalc.enums.Stat;
+import articalc.math.FutureSubs;
 
 public class TestLocks {
 
 	public static void main(String[] args) {
-		ArtifactParser parse = new ArtifactParser("genshinData_GOOD_2023_07_23_12_13.json");
+		ArtifactParser parse = new ArtifactParser("genshinData_GOOD_2024_02_22_22_13.json");
 		
 		int levelMax = 20;
 		Set set = null; 
@@ -53,8 +54,10 @@ public class TestLocks {
 					}
 				}
 				float weightedValue = art.getUpdatedWeightedValue();
-				boolean toLock = weightedValue >= 0.8f;
-				if (toLock && bestFValue < 0.8f) {
+				//System.out.println(weightedValue + "; On: " + bestFValue + ", Off: " + bestOPValue);
+				float rate = FutureSubs.getFutureValue(art);
+				boolean toLock = (/*weightedValue >= FutureSubs.REQUIREMENT && rate > FutureSubs.FUTURE_CHANCE_MINIMUM) ||*/ rate > ((art.level < 4)?FutureSubs.FUTURE_CHANCE:FutureSubs.FUTURE_CHANCE_LEVELED));
+				if (toLock /*&& bestFValue < FutureSubs.REQUIREMENT*/) {
 					increment(offPieces, art.slot, art.mainStat);
 					if (art.slot == Slot.flower || art.slot == Slot.plume) {
 						System.out.println(art);
@@ -73,6 +76,7 @@ public class TestLocks {
 					bw.write(String.format("onpiece %s %s: %.2f%c - %.2f%c%s",bestBuild.character, bestBuild.getClass().getSimpleName(), bestCValue*100f,'%',bestFValue*100f,'%',System.lineSeparator()));
 					bw.write(String.format("offpiece %s %s: %.2f%c%s",bestBuildOff.character, bestBuildOff.getClass().getSimpleName(), bestOPValue*100f,'%',System.lineSeparator()));
 					bw.write(String.format("Value: %.2f%c%s", weightedValue*100f, '%', System.lineSeparator()));
+					bw.write(String.format("Rate: %.2f%c%s", rate*100f, '%', System.lineSeparator()));
 					if (toLock && !art.locked) {
 						bw.write("Look into locking");
 						bw.newLine();

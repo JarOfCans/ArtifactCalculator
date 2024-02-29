@@ -33,6 +33,7 @@ class GoodBirbSupport extends Build {
 	@Override
 	public void fourPiece(HashMap<Set, Float> sets) {
 		sets.put(Set.Noblesse, 1f);
+		sets.put(Set.DaysPast, 0.8f);
 	}
 
 	@Override

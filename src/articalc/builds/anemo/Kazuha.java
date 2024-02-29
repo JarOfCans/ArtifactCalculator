@@ -55,7 +55,7 @@ class NormalKazuhaThings extends Build {
 		stats.put(Stat.EM, 1f);
 		stats.put(Stat.ER, 1f);
 		stats.put(Stat.CR, 0.9f);
-		stats.put(Stat.CD, 0.7f);
+		stats.put(Stat.CD, 0.8f);
 		stats.put(Stat.ATKP, 0.6f);
 		stats.put(Stat.ATK, 0.2f);
 	}

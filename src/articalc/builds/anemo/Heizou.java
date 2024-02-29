@@ -13,8 +13,9 @@ public class Heizou extends CharacterBuilds {
 
 	@Override
 	public void assignBuilds(ArrayList<Build> cb) {
-		cb.add(new PunchDPS(character, 0.5f));
-		cb.add(new PunchSwirl(character, 0.5f));
+		cb.add(new PunchDPS(character, 0.2f));
+		cb.add(new PunchSwirl(character, 0.2f));
+		cb.add(new PunchMix(character, 0.6f));
 	}
 
 }
@@ -117,5 +118,51 @@ class PunchSwirl extends Build {
 		stats.put(Stat.ER, 0.95f);
 		stats.put(Stat.ATK, 0.2f);
 	}
-	
+}
+class PunchMix extends Build {
+
+	public PunchMix(Characters character, float priority) {
+		super(character, priority);
+	}
+
+	@Override
+	public void twoPiece(HashMap<Stat, Float> stats) {
+		
+	}
+
+	@Override
+	public void fourPiece(HashMap<Set, Float> sets) {
+		sets.put(Set.Viridescent, 1f);
+	}
+
+	@Override
+	public void sands(HashMap<Stat, Float> stats) {
+		stats.put(Stat.EM, 1f);
+		stats.put(Stat.ATKP, 1f);
+		stats.put(Stat.ER, 1f);
+	}
+
+	@Override
+	public void goblet(HashMap<Stat, Float> stats) {
+		stats.put(Stat.EM, 1f);
+		stats.put(Stat.Anemo, 1f);
+	}
+
+	@Override
+	public void circlet(HashMap<Stat, Float> stats) {
+		stats.put(Stat.EM, 1f);
+		stats.put(Stat.CR, 1f);
+		stats.put(Stat.CD, 1f);
+		
+	}
+
+	@Override
+	public void subs(HashMap<Stat, Float> stats) {
+		stats.put(Stat.EM, 1f);
+		stats.put(Stat.CR, 1f);
+		stats.put(Stat.CD, 1f);
+		stats.put(Stat.ATKP, 0.7f);
+		stats.put(Stat.ER, 1f);
+		stats.put(Stat.ATK, 0.2f);
+	}
 }

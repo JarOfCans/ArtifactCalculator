@@ -53,12 +53,12 @@ class Rock extends Build {
 
 	@Override
 	public void subs(HashMap<Stat, Float> stats) {
-		stats.put(Stat.CD, 0.9f);
+		stats.put(Stat.CD, 0.95f);
 		stats.put(Stat.CR, 1f);
 		stats.put(Stat.ER, 0.7f);
-		stats.put(Stat.HPP, 0.7f);
+		stats.put(Stat.HPP, 0.65f);
 		stats.put(Stat.ATKP, 0.6f);
-		stats.put(Stat.HP, 0.25f);
+		stats.put(Stat.HP, 0.2f);
 		stats.put(Stat.ATK, 0.2f);
 	}
 	

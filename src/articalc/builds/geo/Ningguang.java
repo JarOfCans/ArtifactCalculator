@@ -13,8 +13,8 @@ public class Ningguang extends CharacterBuilds {
 
 	@Override
 	public void assignBuilds(ArrayList<Build> cb) {
-		cb.add(new ManyRocks(character, 0.5f));
-		cb.add(new Archaic(character, 1f));
+		cb.add(new ManyRocks(character, 0.6f));
+		cb.add(new Archaic(character, 0.4f));
 		
 	}
 
@@ -28,13 +28,14 @@ class ManyRocks extends Build {
 
 	@Override
 	public void twoPiece(HashMap<Stat, Float> stats) {
-		stats.put(Stat.Geo, 0.9f);
-		stats.put(Stat.ATKP, 0.8f);
+		stats.put(Stat.Geo, 0.6f);
+		stats.put(Stat.ATKP, 0.55f);
 	}
 
 	@Override
 	public void fourPiece(HashMap<Set, Float> sets) {
-		sets.put(Set.Emblem, 1f);
+		sets.put(Set.Emblem, 0.7f);
+		sets.put(Set.Nighttime, 1f);
 	}
 
 	@Override

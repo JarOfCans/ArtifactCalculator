@@ -91,7 +91,7 @@ class Burgeon extends Build {
 	@Override
 	public void sands(HashMap<Stat, Float> stats) {
 		stats.put(Stat.ER, 1f);
-		stats.put(Stat.EM, 0.9f);
+		stats.put(Stat.EM, 1f);
 	}
 
 	@Override
@@ -106,14 +106,14 @@ class Burgeon extends Build {
 
 	@Override
 	public void subs(HashMap<Stat, Float> stats) {
-		stats.put(Stat.HPP, 0.95f);
+		stats.put(Stat.HPP, 0.6f);
 		stats.put(Stat.ER, 1f);
-		stats.put(Stat.HP, 0.35f);
-		stats.put(Stat.ATKP, 0.6f);
+		stats.put(Stat.HP, 0.2f);
+		stats.put(Stat.ATKP, 0.4f);
 		stats.put(Stat.ATK, 0.1f);
 		stats.put(Stat.EM, 1f);
-		stats.put(Stat.CR, 0.95f);
-		stats.put(Stat.CD, 1f);
+		stats.put(Stat.CR, 0.55f);
+		stats.put(Stat.CD, 0.5f);
 	}
 	
 }

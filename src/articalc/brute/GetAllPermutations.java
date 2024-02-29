@@ -56,6 +56,26 @@ public class GetAllPermutations {
 		}
 		return allSubs;
 	}
+	public static ArrayList<Artifact> allNoMain(float subMultiplier) {
+		ArrayList<Stat> subs = Stat.subs();
+		ArrayList<Artifact> allSubs = new ArrayList<Artifact>(256);
+			for (int i1 = 0; i1 < subs.size(); i1++) {
+					for (int i2 = i1+1; i2 < subs.size(); i2++) {
+							for (int i3 = i2+1; i3 < subs.size(); i3++) {
+									for (int i4 = i3+1; i4 < subs.size(); i4++) {
+											Artifact subStack = new Artifact();
+											subStack.addSub(0, subs.get(i1), subs.get(i1).subMax * subMultiplier);
+											subStack.addSub(1, subs.get(i2), subs.get(i2).subMax * subMultiplier);
+											subStack.addSub(2, subs.get(i3), subs.get(i3).subMax * subMultiplier);
+											subStack.addSub(3, subs.get(i4), subs.get(i4).subMax * subMultiplier);
+											//subStack.calcChance();
+											allSubs.add(subStack);
+										}
+									}
+								}
+							}
+		return allSubs;
+	}
 	
 
 	

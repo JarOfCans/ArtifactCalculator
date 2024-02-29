@@ -34,7 +34,8 @@ class GoodBoi extends Build {
 	public void fourPiece(HashMap<Set, Float> sets) {
 		sets.put(Set.Exile, 0.9f);
 		sets.put(Set.Noblesse, 1f);
-		sets.put(Set.Husk, 1f);
+		sets.put(Set.Husk, 0.8f);
+		sets.put(Set.DaysPast, 0.8f);
 	}
 
 	@Override

@@ -46,7 +46,7 @@ class Flower extends Build {
 	@Override
 	public void goblet(HashMap<Stat, Float> stats) {
 		stats.put(Stat.Geo, 1f);
-		stats.put(Stat.DEFP, 0.5f);
+		stats.put(Stat.DEFP, 0.9f);
 	}
 
 	@Override

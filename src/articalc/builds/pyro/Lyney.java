@@ -47,14 +47,14 @@ class MonoPyroMagic extends Build {
 	@Override
 	public void circlet(HashMap<Stat, Float> stats) {
 		stats.put(Stat.CD, 1f);
-		stats.put(Stat.CR, 0.7f);
+		stats.put(Stat.CR, 0.8f);
 	}
 
 	@Override
 	public void subs(HashMap<Stat, Float> stats) {
 		stats.put(Stat.CD, 1f);
 		stats.put(Stat.CR, 0.7f);
-		stats.put(Stat.ATKP, 0.7f);
+		stats.put(Stat.ATKP, 0.75f);
 		stats.put(Stat.ATK, 0.25f);
 		stats.put(Stat.ER, 0.7f);
 	}

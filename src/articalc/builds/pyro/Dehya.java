@@ -40,7 +40,7 @@ class BudgetXinyan extends Build {
 	@Override
 	public void sands(HashMap<Stat, Float> stats) {
 		stats.put(Stat.ER, 1f);
-		stats.put(Stat.HPP, 0.7f);
+		stats.put(Stat.HPP, 0.8f);
 		stats.put(Stat.ATKP, 0.8f);
 	}
 

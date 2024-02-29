@@ -13,8 +13,8 @@ public class Kirara extends CharacterBuilds {
 
 	@Override
 	public void assignBuilds(ArrayList<Build> cb) {
-		cb.add(new BoxDamage(character, 0.4f));
-		cb.add(new BoxShield(character, 0.6f));
+		//cb.add(new BoxDamage(character, 0.4f));
+		cb.add(new BoxShield(character, 1f));
 	}
 
 }
@@ -102,18 +102,19 @@ class BoxShield extends Build {
 	@Override
 	public void circlet(HashMap<Stat, Float> stats) {
 		stats.put(Stat.HPP, 1f);
+		stats.put(Stat.CR, 1f);
 	}
 
 	@Override
 	public void subs(HashMap<Stat, Float> stats) {
 		stats.put(Stat.HPP, 1f);
 		stats.put(Stat.EM, 0.8f);
-		stats.put(Stat.ER, 0.6f);
+		stats.put(Stat.ER, 0.8f);
 		stats.put(Stat.CR, 0.7f);
 		stats.put(Stat.CD, 0.5f);
-		stats.put(Stat.ATKP, 0.5f);
+		stats.put(Stat.ATKP, 0.4f);
 		stats.put(Stat.HP, 0.4f);
-		stats.put(Stat.ATK, 0.2f);
+		stats.put(Stat.ATK, 0.1f);
 	}
 	
 }

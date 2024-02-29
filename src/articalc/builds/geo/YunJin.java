@@ -30,7 +30,7 @@ class TheGrandFinale extends Build {
 
 	@Override
 	public void fourPiece(HashMap<Set, Float> sets) {
-		sets.put(Set.Noblesse, 0.8f);
+		sets.put(Set.Noblesse, 0.9f);
 		sets.put(Set.Husk, 1f);
 	}
 
@@ -56,9 +56,9 @@ class TheGrandFinale extends Build {
 		stats.put(Stat.DEFP, 1f);
 		stats.put(Stat.ER, 1f);
 		stats.put(Stat.CR, 1f);
-		stats.put(Stat.CD, 0.3f);
-		stats.put(Stat.DEF, 0.4f);
-		stats.put(Stat.ATKP, 0.2f);
+		stats.put(Stat.CD, 0.2f);
+		stats.put(Stat.DEF, 0.3f);
+		stats.put(Stat.ATKP, 0.1f);
 	}
 	
 }

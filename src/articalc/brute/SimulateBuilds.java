@@ -9,6 +9,8 @@ import articalc.enums.Characters;
 import articalc.enums.Domain;
 import articalc.enums.Set;
 import articalc.enums.Slot;
+import articalc.enums.ValueMethod;
+import articalc.math.FutureSubs;
 
 public class SimulateBuilds {
 	Random r = new Random();
@@ -18,7 +20,7 @@ public class SimulateBuilds {
 		//float[] penalties = {0f, 0.05f, 0.08f, 0.1f, 0.12f, 0.15f};
 		
 		
-		int totalRuns = 500;
+		int totalRuns = 1;
 		int totalRunsStrongbox = 0;
 		int totalRunsStrongboxless = 0;
 		int totalRunsStrongbox2 = 0;
@@ -37,37 +39,48 @@ public class SimulateBuilds {
 			//if (penalties.length >= 1)
 				//penalty = penalties[p];
 		for (int i = 0; i < totalRuns; i++) {
-			int[] output = new SimulateBuilds().doDomains(true, false, false);
+			int[] output = new SimulateBuilds().doDomains(true, false, false, ValueMethod.FutureValue, new float[] {.1f, .2f, .2f, .2f, .2f, .2f});
 			totalRunsStrongbox += output[0];
 			totalTwentyArtifacts += output[1];
 			totalArtifacts += output[2];
+			//System.out.println("Moo");
+			output = new SimulateBuilds().doDomains(true, false, false, ValueMethod.FutureSubs, new float[] {.05f, .0f, .05f, .05f, .0f, .0f});
+			totalRunsStrongbox2 += output[0];
+			totalTwentyArtifacts2 += output[1];
+			totalArtifacts2 += output[2];
+			/*output = new SimulateBuilds().doDomains(true, false, false, ValueMethod.FutureSubs, new float[] {.1f, .15f, .15f, .15f, .2f, .2f});
+			totalRunsStrongbox3 += output[0];
+			totalTwentyArtifacts3 += output[1];
+			totalArtifacts3 += output[2];*/
 			
 			//Strongbox-less
-			output = new SimulateBuilds().doDomains(false, false, false);
+			/*output = new SimulateBuilds().doDomains(false, false, false);
 			totalRunsStrongboxless += output[0];
 			
 			output = new SimulateBuilds().doDomains(true, true, false);
 			totalRunsStrongbox2 += output[0];
 			totalTwentyArtifacts2 += output[1];
 			totalArtifacts2 += output[2];
-			output = new SimulateBuilds().doDomains(true, true, true);
+			/*output = new SimulateBuilds().doDomains(true, true, true);
 			totalRunsStrongbox3 += output[0];
 			totalTwentyArtifacts3 += output[1];
-			totalArtifacts3 += output[2];
+			totalArtifacts3 += output[2];*/
 			//totalTwentyArtifacts += output[1];
 			//totalArtifacts += output[2];
 			///*
-			if (i%(Math.max(totalRuns/10,1)) == 0)
-			System.out.println("Runs complete:" + i);//*/
+			if (i%(Math.max(totalRuns/500,1)) == 0)
+			System.out.println("Runs complete:" + (i +1));//*/
 		}
 		//if (penalties.length > 1) {
 		//System.out.printf("Penalty %.2f%s", penalties[p],System.lineSeparator() );
 		//}
-		System.out.println("Average number of runs w/ Strongbox: " + (totalRunsStrongbox/totalRuns) + ", " +(totalRunsStrongbox/totalRuns/9) + " days, with " + (totalTwentyArtifacts/totalRuns) + " average leveled artifacts, " + (totalArtifacts/totalRuns) + " viable artifacts total" );
-		System.out.println("Average number of runs w/o Strongbox: " + (totalRunsStrongboxless/totalRuns) + ", " +(totalRunsStrongboxless/totalRuns/9) + " days ");
+		System.out.println("Average number of runs w/ Strongbox+Old method: " + (totalRunsStrongbox/totalRuns) + ", " +(totalRunsStrongbox/totalRuns/9) + " days, with " + (totalTwentyArtifacts/totalRuns) + " average leveled artifacts, " + (totalArtifacts/totalRuns) + " viable artifacts total" );
+		System.out.println("Average number of runs w/ Strongbox+New method (10, then 20): " + (totalRunsStrongbox2/totalRuns) + ", " +(totalRunsStrongbox2/totalRuns/9) + " days, with " + (totalTwentyArtifacts2/totalRuns) + " average leveled artifacts, " + (totalArtifacts2/totalRuns) + " viable artifacts total" );
+		//System.out.println("Average number of runs w/ Strongbox+New method (10, then 20): " + (totalRunsStrongbox3/totalRuns) + ", " +(totalRunsStrongbox3/totalRuns/9) + " days, with " + (totalTwentyArtifacts3/totalRuns) + " average leveled artifacts, " + (totalArtifacts3/totalRuns) + " viable artifacts total" );
+		//System.out.println("Average number of runs w/o Strongbox: " + (totalRunsStrongboxless/totalRuns) + ", " +(totalRunsStrongboxless/totalRuns/9) + " days ");
 
-		System.out.println("Average number of runs w/ Strongbox2: " + (totalRunsStrongbox2/totalRuns) + ", " +(totalRunsStrongbox2/totalRuns/9) + " days, with " + (totalTwentyArtifacts2/totalRuns) + " average leveled artifacts, " + (totalArtifacts2/totalRuns) + " viable artifacts total" );
-		System.out.println("Average number of runs w/ Strongbox3: " + (totalRunsStrongbox3/totalRuns) + ", " +(totalRunsStrongbox3/totalRuns/9) + " days, with " + (totalTwentyArtifacts3/totalRuns) + " average leveled artifacts, " + (totalArtifacts3/totalRuns) + " viable artifacts total" );//}
+		//System.out.println("Average number of runs w/ Strongbox2: " + (totalRunsStrongbox2/totalRuns) + ", " +(totalRunsStrongbox2/totalRuns/9) + " days, with " + (totalTwentyArtifacts2/totalRuns) + " average leveled artifacts, " + (totalArtifacts2/totalRuns) + " viable artifacts total" );
+		//System.out.println("Average number of runs w/ Strongbox3: " + (totalRunsStrongbox3/totalRuns) + ", " +(totalRunsStrongbox3/totalRuns/9) + " days, with " + (totalTwentyArtifacts3/totalRuns) + " average leveled artifacts, " + (totalArtifacts3/totalRuns) + " viable artifacts total" );//}
 		
 		
 		/*int totalRunsNobox = 0;
@@ -85,15 +98,15 @@ public class SimulateBuilds {
 		@SuppressWarnings("unused")
 		Object loadDomains = Domain.GoldCity;
 	}
-	public int[] doDomains(boolean doStrongbox, boolean doStrongbox2, boolean doStrongbox3) {
+	public int[] doDomains(boolean doStrongbox, boolean doStrongbox2, boolean doStrongbox3, ValueMethod vm, float[] leveledRequirement) {
 		//int[] output = {0,0};
 		int twentyArtifacts = 0;
-		Build[] team = new Build[8];
+		Build[] team = new Build[1];
 		Set[] sets = new Set[team.length*2];
 		Set[] strongboxSets = new Set[team.length];
 		Artifact[] bestOnPieces = new Artifact[team.length*10];
 		Artifact[] bestOffPieces = new Artifact[team.length*5];
-		Float[] minValue = new Float[team.length];
+		float[] minValue = new float[team.length];
 		ArrayList<Artifact> all5stars = new ArrayList<Artifact>(100);
 		int runs = 0, exp = 0, extraArtifacts = 0;
 		float minminValue;
@@ -102,8 +115,8 @@ public class SimulateBuilds {
 		//System.out.println("Character build 1: " + team[0].character + " " + team[0].getClass().getSimpleName());
 		sets[0] = Set.Deepwood;
 		sets[1] = Set.Deepwood;
-		strongboxSets[0] = Set.Emblem;
-		minValue[0] = .75f;
+		strongboxSets[0] = Set.Deepwood;
+		minValue[0] = .8f;
 		minminValue = minValue[0];
 		//Char 2
 		if (team.length > 1) {
@@ -112,7 +125,7 @@ public class SimulateBuilds {
 		sets[2] = Set.Gilded;
 		sets[3] = Set.Gilded;
 		strongboxSets[1] = Set.Noblesse;
-		minValue[1] = .75f;
+		minValue[1] = .8f;
 		minminValue = Math.min(minminValue, minValue[1]);
 		//Char 3
 		if (team.length > 2) {
@@ -121,7 +134,7 @@ public class SimulateBuilds {
 		sets[4] = Set.OceanHued;
 		sets[5] = Set.OceanHued;
 		strongboxSets[2] = Set.OceanHued;
-		minValue[2] = .75f;
+		minValue[2] = .8f;
 		minminValue = Math.min(minminValue, minValue[2]);
 		//Char 4
 		if (team.length > 3) {
@@ -130,7 +143,7 @@ public class SimulateBuilds {
 		sets[6] = Set.Emblem;
 		sets[7] = Set.Emblem;
 		strongboxSets[3] = Set.Emblem;
-		minValue[3] = .75f;
+		minValue[3] = .8f;
 		minminValue = Math.min(minminValue, minValue[3]);
 		}
 		//Char 1b
@@ -140,7 +153,7 @@ public class SimulateBuilds {
 			sets[8] = Set.Emblem;
 			sets[9] = Set.Emblem;
 			strongboxSets[4] = Set.Emblem;
-			minValue[4] = .75f;
+			minValue[4] = .8f;
 			minminValue = Math.min(minminValue, minValue[3]);
 			}
 		//Char 2b
@@ -150,7 +163,7 @@ public class SimulateBuilds {
 			sets[10] = Set.Emblem;
 			sets[11] = Set.Emblem;
 			strongboxSets[5] = Set.Emblem;
-			minValue[5] = .75f;
+			minValue[5] = .8f;
 			minminValue = Math.min(minminValue, minValue[3]);
 			}
 		//Char 3b
@@ -160,7 +173,7 @@ public class SimulateBuilds {
 			sets[12] = Set.Emblem;
 			sets[13] = Set.Emblem;
 			strongboxSets[6] = Set.Emblem;
-			minValue[6] = .75f;
+			minValue[6] = .8f;
 			minminValue = Math.min(minminValue, minValue[3]);
 			}
 		//Char 4b
@@ -170,7 +183,7 @@ public class SimulateBuilds {
 			sets[14] = Set.Noblesse;
 			sets[15] = Set.Noblesse;
 			strongboxSets[7] = Set.Noblesse;
-			minValue[7] = .75f;
+			minValue[7] = .8f;
 			minminValue = Math.min(minminValue, minValue[3]);
 			}}}
 		//Run da goods
@@ -183,7 +196,7 @@ public class SimulateBuilds {
 				Artifact newArt = Artifact.newRandomArtifactDomain(farmset, farmset.coSet);
 				
 				//check if keep or trash
-				if (newArt.getUpdatedWeightedValue() > minminValue) {
+				if (fasterCheckIfGood(newArt, team, ((vm == ValueMethod.FutureSubs)?leveledRequirement:minValue), vm)) {
 					all5stars.add(newArt);
 				} else {
 					if (doStrongbox) {
@@ -196,7 +209,7 @@ public class SimulateBuilds {
 				if (extraArtifacts >= 3) {
 					extraArtifacts -= 3;
 					newArt = Artifact.newRandomArtifactStrongbox(strongboxSets[i]);
-					if (newArt.getUpdatedWeightedValue() > minminValue) {
+					if (fasterCheckIfGood(newArt, team, ((vm == ValueMethod.FutureSubs)?leveledRequirement:minValue), vm)) {
 						all5stars.add(newArt);
 					} else {
 						if (doStrongbox) {
@@ -239,14 +252,14 @@ public class SimulateBuilds {
 				if (nextLevel != null) {
 				nextLevel.randomlyLevel(12);
 				exp -= Artifact.levelEXP[12];
-				if (nextLevel.getUpdatedWeightedValue() > minminValue) {
+				if (fasterCheckIfGood(newArt, team, ((vm == ValueMethod.FutureSubs)?leveledRequirement:minValue), vm)) {
 					//Raise to 20
 					nextLevel.randomlyLevel(8);
 					exp += Artifact.levelEXP[12];
 					exp -= Artifact.levelEXP[20];
-					if (nextLevel.getUpdatedWeightedValue() > minminValue) {
+					if (nextLevel.getUpdatedWeightedValue() >= minminValue) {
 						//See if best
-						//System.out.println("Keeping:");
+						System.out.println("Keeping: " + nextLevel);
 						//System.out.println("Raising:" + nextLevel);
 						twentyArtifacts++;
 						for (int y = 0; y < team.length; y++) {
@@ -458,13 +471,13 @@ public class SimulateBuilds {
 		for (int i = 0; i < 5; i++) {
 			switch (bestSlots[i]) {
 			case 0:
-				System.out.println(onPieces[num*10+i] + " " + cha.getValueUpdated(onPieces[num*10+i]));
+				//System.out.println(onPieces[num*10+i] + " " + cha.getValueUpdated(onPieces[num*10+i]));
 				break;
 			case 1:
-				System.out.println(onPieces[num*10+i+5] + " " + cha.getValueUpdated(onPieces[num*10+i+5]));
+				//System.out.println(onPieces[num*10+i+5] + " " + cha.getValueUpdated(onPieces[num*10+i+5]));
 				break;
 			case 2:
-				System.out.println(offPieces[num*5+i] + " " + cha.getFutureOffPieceValueUpdated(offPieces[num*5+i], true));
+				//System.out.println(offPieces[num*5+i] + " " + cha.getFutureOffPieceValueUpdated(offPieces[num*5+i], true));
 				break;
 			}
 		}
@@ -472,4 +485,27 @@ public class SimulateBuilds {
 		return maxValue;
 	}
 	
+	public static boolean fasterCheckIfGood(Artifact art, Build[] builds, float[] requirements, ValueMethod vm) {
+		//FutureSubs.getFutureValue(newArt)>=leveledRequirement[newArt.level/4]):
+			//()
+		switch (vm) {
+		case FutureValue:
+			return art.getUpdatedWeightedValue()>=0.8f;
+			/*for (int i = 0; i < builds.length; i++) {
+				Build b = builds[i];
+				float requirement = requirements[i];
+				return b.getValueUpdated(art) >= requirement;
+			}*/
+		case FutureSubs:
+			for (int i = 0; i < builds.length; i++) {
+				Build b = builds[i];
+				float requirement = requirements[art.level/4];
+				if (FutureSubs.getFutureValue(b, art, false) >= requirement || FutureSubs.getFutureValue(b, art, true) >= requirement ) {
+					System.out.println(art);
+					return true;
+				}
+			}
+		default: return false;
+		}
+	}
 }

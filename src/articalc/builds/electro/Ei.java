@@ -100,11 +100,11 @@ class EMThings extends Build {
 	@Override
 	public void subs(HashMap<Stat, Float> stats) {
 		stats.put(Stat.EM, 1f);
-		stats.put(Stat.ER, 0.7f);
-		stats.put(Stat.CR, 0.9f);
-		stats.put(Stat.CD, 0.9f);
-		stats.put(Stat.ATKP, 0.6f);
-		stats.put(Stat.ATK, 0.2f);
+		stats.put(Stat.ER, 0.5f);
+		stats.put(Stat.CR, 0.6f);
+		stats.put(Stat.CD, 0.6f);
+		stats.put(Stat.ATKP, 0.5f);
+		stats.put(Stat.ATK, 0.15f);
 	}
 	
 }

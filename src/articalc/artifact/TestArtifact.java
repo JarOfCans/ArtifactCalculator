@@ -16,25 +16,36 @@ public class TestArtifact {
 		//TestBuilds.main(args);
 		
 		//Artifact art = new Artifact(Set.Emblem,0);
-		Artifact art = new Artifact(Set.Glow, 0);
-		art.slot = Slot.flower;
-		art.mainStat = Stat.CD;
-		art.addSub(0, Stat.CR, 3.1f);
-		art.addSub(1, Stat.CD, 6.2f);
-		art.addSub(2, Stat.DEF, 16f);
-		art.addSub(3, Stat.NULL, 18f);
-		
-		testArtifact(art, 0.8f);
-		testArtifactBrrrrr(art, 0.75f, true);
-		System.out.println(FutureSubs.getFutureValue(art, .75f));
+ 		Artifact art = new Artifact(Set.Marechaussee, 0);
+		art.slot = Slot.goblet;
+		art.mainStat = Stat.Dendro;
+		art.addSub(0, Stat.DEF, 19f);
+		art.addSub(1, Stat.ER, 5.8f);
+		art.addSub(2, Stat.HP, 239f);
+		art.addSub(3, Stat.NULL, 18.8f);
+		//long time = System.currentTimeMillis();
+		testArtifact(art, FutureSubs.REQUIREMENT);
+		//System.out.println(System.currentTimeMillis() - time);
+		//time = System.currentTimeMillis();
+		//FutureSubs.getFutureValue(art);
+		//System.out.println(System.currentTimeMillis() - time);
+		//time = System.currentTimeMillis();
+		//System.out.println(Characters.Thoma.cb.cb.get(1).getValueUpdated(art));
+		//System.out.println(Characters.Thoma.cb.cb.get(1).getFutureOffPieceValueUpdated(art, true));
+		//System.out.println(System.currentTimeMillis() - time);
+		//testArtifactBrrrrr(art, FutureSubs.REQUIREMENT, true);
+		//System.out.println(FutureSubs.getFutureValue(art));
+		//time = System.currentTimeMillis();
+		System.out.println(FutureSubs.getFourthSubArray(art));
+		//System.out.println(System.currentTimeMillis() - time);
 		//printArtBuildArray(art, 75);
 		//art = art.newRandomArtifactDomain(Set.Deepwood, Set.Gilded);
 		
 	}
 	
 	public static float testArtifact(Artifact art, float threshold) {
-		threshold -= (art.level/4)/100f;
-		System.out.println(threshold);
+		//threshold -= (art.level/4)/100f;
+		//System.out.println(threshold);
 		Build bestBuild = null;
 		float bestFValue = -1f;
 		float bestCValue = 0f;

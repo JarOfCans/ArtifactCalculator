@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import articalc.artifact.Artifact;
+import articalc.brute.DataPack;
 import articalc.character.Build;
 import articalc.enums.Characters;
 import articalc.enums.Slot;
@@ -11,6 +12,10 @@ import articalc.enums.Stat;
 
 public class FutureSubs {
 	static ArrayList<HashMap<int[], Integer>> arrayMap;
+	public static final float REQUIREMENT = 0.8f;
+	public static final float FUTURE_CHANCE_MINIMUM = 0.02f;
+	public static final float FUTURE_CHANCE = 0.1f;
+	public static final float FUTURE_CHANCE_LEVELED = 0.2f;
 	
 	public static int[] test = {0,0,0,0};
 	/*
@@ -87,7 +92,7 @@ public class FutureSubs {
 	}
 	
 	private static void setUpArrayMap() {
-		for (int value = 0; value < 6; value++) {
+		for (int value = -1; value < 6; value++) {
 			HashMap<int[], Integer> map = new HashMap<int[], Integer>();
 		switch(value) {
 		case 0:
@@ -233,7 +238,8 @@ public class FutureSubs {
 		}
 	}
 	
-	public static float getFutureValue(Build b, Artifact art, boolean onPiece, float valMin) {
+	public static float getFutureValue(Build b, Artifact art, boolean onPiece) {
+		float valMin = REQUIREMENT;
 		Artifact clone = art.clone();
 		float output = 0f;
 		float totals = 0;
@@ -291,7 +297,18 @@ public class FutureSubs {
 		}
 		return output;
 	}
-	public static float getFutureValue(Artifact art, float valMin) {
+	public static float getFutureValue(Artifact art) {
+		float valMin = REQUIREMENT;
+		if (art.level == 20) {
+			for (Characters c: Characters.values()) {
+				for (Build b: c.cb.cb) {
+					if (b.getValueUpdated(art) >= valMin || b.getOffPieceValueUpdated(art) - Slot.rarityMod(art.slot, art.mainStat) >= valMin) {
+						return 1f;
+					}
+				}
+			}
+			return 0f;
+		}
 		Artifact clone = art.clone();
 		//System.out.println(clone);
 		float output = 0f;
@@ -299,6 +316,7 @@ public class FutureSubs {
 		int levelups = 5 - art.level/4;
 		//if 3-sub artifact
 		if (art.subs[3] == Stat.NULL || art.subs[3] == null) {
+			//System.out.println(art);
 			//1 level dedicated to gaining a sub
 			levelups--;
 			//for each sub
@@ -309,9 +327,10 @@ public class FutureSubs {
 					current4sub.subs[3] = sub;
 					float subChance = sub.subChance/(1-current4sub.subs[0].subChance-current4sub.subs[1].subChance-current4sub.subs[2].subChance);
 					for (int subVal = 0; subVal < 4; subVal++) {
+						//make a 4 sub artifact
 						current4sub.subValues[3] = current4sub.subs[3].subMax*(0.7f + 0.1f*subVal);
 						//now a 4 sub artifact
-						HashMap<int[], Integer> map = getAll(levelups);
+						HashMap<int[], Integer> map = getAll(levelups + 1);
 						for (int[] subs: map.keySet()) {
 							for (int[] subIncreases: map.keySet()) {
 								clone = current4sub.clone();
@@ -345,24 +364,33 @@ public class FutureSubs {
 					}
 				}
 			}
-			System.out.println(output);
-			System.out.println(totals);
+			//System.out.println(output);
+			//System.out.println(totals);
 			output /= (float)totals;
 		} else {
 			//else 4 sub artifact
-			HashMap<int[], Integer> map = getAll(levelups);
+			HashMap<int[], Integer> map = getAll(levelups + 1);
 			//For each combination of increased subs
 			for (int[] subs: map.keySet()) {
+				//System.out.println("Length: " + map.size());
 				//For each combination of increase amounts
 				for (int[] subIncreases: map.keySet()) {
 					clone = art.clone();
 					for (int i = 0; i < subs.length; i++) {
+						try {
 						clone.subValues[subs[i]] += clone.subs[subs[i]].subMax * (0.7f + 0.1f*subIncreases[i]);
+						} catch (NullPointerException e) {
+							System.err.println(clone);
+							throw e;
+						}
 					}
 					clone.level = 20;
 					boolean doBreak = false;
+					//System.out.println(clone);
 					for (Characters c: Characters.values()) {
 						for (Build b: c.cb.cb) {
+							//System.out.printf("onpiece %s %s: %.2f%c%s",c, b.getClass().getSimpleName(), b.getValueUpdated(clone)*100f,'%', System.lineSeparator());
+							//System.out.printf("offpiece %s %s: %.2f%c%s",c, b.getClass().getSimpleName(), b.getOffPieceValueUpdated(clone)*100f,'%', System.lineSeparator());
 							if (b.getValueUpdated(clone) >= valMin) {
 								output += map.get(subs) * map.get(subIncreases);
 								doBreak = true;
@@ -382,10 +410,12 @@ public class FutureSubs {
 					totals += map.get(subs) * map.get(subIncreases);
 				}
 			}
+			//System.out.println(output + "/" + totals);
 			output /= (float)totals;
 		}
 		return (float)(((int)(output*10000))*0.0001);
 	}
+	@Deprecated
 	public static float[] getFutureValueArray(Build b, Artifact art, boolean onPiece) {
 		Artifact clone = art.clone();
 		float[] output = new float[101];
@@ -444,6 +474,7 @@ public class FutureSubs {
 		}
 		return output;
 	}
+	@Deprecated
 	public static float[] getFutureValueArray(Artifact art) {
 		Artifact clone = art.clone();
 		float[] output = new float[101];
@@ -517,10 +548,34 @@ public class FutureSubs {
 			}
 		}
 		for (int i = 0; i < Stat.subsNotNULL().size();i++) {
-			System.out.printf("%s: %.1f%c%s", Stat.subsNotNULL().get(i),fourthSub[i]*100f,'%', System.lineSeparator());
+			//System.out.printf("%s: %.1f%c%s", Stat.subsNotNULL().get(i),fourthSub[i]*100f,'%', System.lineSeparator());
 		}
 		return output;
 	}
-	
+	@Deprecated
+	public static float[] printFutureValueArray(Artifact art) {
+		float[] output = getFutureValueArray(art);
+		int min = -1, max = -1;
+		for (int i = 0; i < output.length; i++) {
+			if (output[i] > 0) {
+				max = i;
+				if (min == -1) {
+					min = i;
+				}
+			}
+		}
+		for (int i = min; i <= max; i++) {
+			System.out.printf("%d: %.4f%s", i, output[i], System.lineSeparator());
+		}
+		return output;
+	}
 
+	public static DataPack getFourthSubArray(Artifact art) {
+		DataPack dp = null;
+		if (art.level < 20) {
+			dp = new DataPack(art);
+		}
+		//System.out.println(output);
+		return dp;
+	}
 }

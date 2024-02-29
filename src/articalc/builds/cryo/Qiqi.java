@@ -13,8 +13,8 @@ public class Qiqi extends CharacterBuilds {
 
 	@Override
 	public void assignBuilds(ArrayList<Build> cb) {
-		cb.add(new BallofDoom(character, 1f));
-		cb.add(new WastedPotentialHealer(character, 1f));
+		cb.add(new BallofDoom(character, 0.5f));
+		cb.add(new WastedPotentialHealer(character, 0.5f));
 	}
 
 }

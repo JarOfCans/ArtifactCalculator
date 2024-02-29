@@ -27,7 +27,6 @@ class DummyBlooms extends Build {
 	@Override
 	public void twoPiece(HashMap<Stat, Float> stats) {
 		stats.put(Stat.HPP, 1f);
-		stats.put(Stat.ER, 0.8f);
 		stats.put(Stat.EM, 0.9f);
 	}
 

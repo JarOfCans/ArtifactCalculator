@@ -32,6 +32,7 @@ class EMKuki extends Build {
 	@Override
 	public void fourPiece(HashMap<Set, Float> sets) {
 		sets.put(Set.Gilded, 1f);
+		sets.put(Set.ParadiseLost, 1f);
 	}
 
 	@Override
@@ -55,13 +56,12 @@ class EMKuki extends Build {
 	@Override
 	public void subs(HashMap<Stat, Float> stats) {
 		stats.put(Stat.EM, 1f);
-		stats.put(Stat.ER, 1f);
-		stats.put(Stat.CR, 1f);
-		stats.put(Stat.CD, 1f);
-		stats.put(Stat.HPP, 0.7f);
-		stats.put(Stat.HP, 0.25f);
-		stats.put(Stat.ATKP, 0.3f);
-		stats.put(Stat.ATK, 0.1f);
+		stats.put(Stat.ER, 0.3f);
+		stats.put(Stat.CR, 0.4f);
+		stats.put(Stat.CD, 0.4f);
+		stats.put(Stat.HPP, 0.5f);
+		stats.put(Stat.HP, 0.15f);
+		stats.put(Stat.ATKP, 0.2f);
 	}
 	
 }

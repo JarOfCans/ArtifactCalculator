@@ -253,8 +253,8 @@ public abstract class Build {
 			}
 		}
 		base += bestFourValues.get(art.mainStat);
+		//Use best subs for each leveled, use expected for not-max artifacts
 		base += highestSubValue.get(art.mainStat) * art.level/4 + expectedSubsValue.get(art.mainStat) * (5 - art.level/4);
-		
 		if (art.level < 20) {
 			if (scale) {
 				float[] array = {subs.containsKey(art.subs[0])?subs.get(art.subs[0]):0f, subs.containsKey(art.subs[1])?subs.get(art.subs[1]):0f,

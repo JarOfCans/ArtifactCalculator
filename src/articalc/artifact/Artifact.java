@@ -14,6 +14,7 @@ public class Artifact {
 	public int level;
 	public boolean inUse;
 	public boolean locked;
+	public boolean offPieceLocked;
 	public static final int[] levelEXP = {0,3000,6725,11150,16300,22200,28875,36375,44725,53950,64075,
 	                              75125,87150,100175,115325,132925,153300,176800,203850,
 	                              234900,270475};
@@ -314,6 +315,6 @@ public class Artifact {
 				max = Math.max(value, Math.max(max, opvalue));
 			}
 		}
-		return max + (this.level/4)*0.01f;
+		return max ;//+ (this.level/4)*0.01f;
 	}
 }

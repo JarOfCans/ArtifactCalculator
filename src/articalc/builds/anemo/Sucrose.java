@@ -53,11 +53,11 @@ class SwirlShare extends Build {
 	@Override
 	public void subs(HashMap<Stat, Float> stats) {
 		stats.put(Stat.EM, 1f);
-		stats.put(Stat.ER, 0.95f);
-		stats.put(Stat.ATKP, 0.7f);
-		stats.put(Stat.ATK, 0.25f);
-		stats.put(Stat.CR, 0.8f);
-		stats.put(Stat.CD, 0.8f);
+		stats.put(Stat.ER, 1f);
+		stats.put(Stat.ATKP, 0.6f);
+		stats.put(Stat.ATK, 0.2f);
+		stats.put(Stat.CR, 0.7f);
+		stats.put(Stat.CD, 0.7f);
 	}
 	
 }

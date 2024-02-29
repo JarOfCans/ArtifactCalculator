@@ -32,8 +32,9 @@ class NormalMaidThings extends Build {
 
 	@Override
 	public void fourPiece(HashMap<Set, Float> sets) {
-		sets.put(Set.Husk, 1f);
-		sets.put(Set.Gladiator, 0.8f);
+		sets.put(Set.Marechaussee, 1f);
+		sets.put(Set.Husk, 0.9f);
+		sets.put(Set.Gladiator, 0.75f);
 	}
 
 	@Override

@@ -27,12 +27,15 @@ class Healer extends Build {
 
 	@Override
 	public void twoPiece(HashMap<Stat, Float> stats) {
-		stats.put(Stat.HB, 1f);
+		stats.put(Stat.HB, 0.8f);
+		stats.put(Stat.ER, 0.9f);
 	}
 
 	@Override
 	public void fourPiece(HashMap<Set, Float> sets) {
-		sets.put(Set.Maiden, 1f);
+		sets.put(Set.DaysPast, 0.9f);
+		sets.put(Set.Maiden, 0.8f);
+		sets.put(Set.Noblesse, 1f);
 	}
 
 	@Override
@@ -43,13 +46,15 @@ class Healer extends Build {
 	@Override
 	public void goblet(HashMap<Stat, Float> stats) {
 		stats.put(Stat.Electro, 1f);
+		stats.put(Stat.EM, 1f);
 	}
 
 	@Override
 	public void circlet(HashMap<Stat, Float> stats) {
-		stats.put(Stat.CR, 0.8f);
-		stats.put(Stat.CD, 0.8f);
+		stats.put(Stat.CR, 0.85f);
+		stats.put(Stat.CD, 0.85f);
 		stats.put(Stat.HB, 1f);
+		stats.put(Stat.EM, 1f);
 	}
 
 	@Override

@@ -60,7 +60,7 @@ class WindBard extends Build {
 		stats.put(Stat.CD, 1f);
 		stats.put(Stat.EM, 0.95f);
 		stats.put(Stat.ER, 1f);
-		stats.put(Stat.ATKP, 0.6f);
+		stats.put(Stat.ATKP, 0.7f);
 		stats.put(Stat.ATK, 0.2f);
 	}
 	

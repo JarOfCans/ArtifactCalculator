@@ -13,8 +13,8 @@ public class Barbara extends CharacterBuilds {
 
 	@Override
 	public void assignBuilds(ArrayList<Build> cb) {
-		cb.add(new Healer(character, 0.45f));
-		cb.add(new DPS(character, 0.05f));
+		cb.add(new Healer(character, 0.5f));
+		//cb.add(new DPS(character, 0.05f));
 		cb.add(new BloomSupport(character, 0.5f));
 	}
 
