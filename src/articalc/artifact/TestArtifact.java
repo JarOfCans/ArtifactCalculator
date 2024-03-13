@@ -16,13 +16,13 @@ public class TestArtifact {
 		//TestBuilds.main(args);
 		
 		//Artifact art = new Artifact(Set.Emblem,0);
- 		Artifact art = new Artifact(Set.Marechaussee, 0);
+ 		Artifact art = new Artifact(Set.Nymph, 4);
 		art.slot = Slot.goblet;
-		art.mainStat = Stat.Dendro;
-		art.addSub(0, Stat.DEF, 19f);
-		art.addSub(1, Stat.ER, 5.8f);
-		art.addSub(2, Stat.HP, 239f);
-		art.addSub(3, Stat.NULL, 18.8f);
+		art.mainStat = Stat.Hydro;
+		art.addSub(0, Stat.CR, 3.1f);
+		art.addSub(1, Stat.DEF, 16f);
+		art.addSub(2, Stat.HPP, 4.1f);
+		art.addSub(3, Stat.ATKP, 5.8f);
 		//long time = System.currentTimeMillis();
 		testArtifact(art, FutureSubs.REQUIREMENT);
 		//System.out.println(System.currentTimeMillis() - time);

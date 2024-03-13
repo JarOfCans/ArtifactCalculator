@@ -14,10 +14,10 @@ import articalc.math.FutureSubs;
 public class MassFourth {
 
 	public static void main(String[] args) {
-		ArtifactParser parse = new ArtifactParser("genshinData_GOOD_2024_02_12_10_57.json");
+		ArtifactParser parse = new ArtifactParser("genshinData_GOOD_2024_03_02_11_46.json");
 		ArrayList<DataPack> adp = new ArrayList<DataPack>(2000);
 		for (Artifact art: parse.artifacts) {
-			if (art.level < 20 && art.locked) {
+			if (art.level < 20) {
 				adp.add(FutureSubs.getFourthSubArray(art));
 				if (adp.size()%100 == 0) {
 					System.out.println("Fourth sub #" + adp.size() + " written.");
